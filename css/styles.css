@@ -542,7 +542,6 @@ input {
   font-size: 12px;
   line-height: 2;
   letter-spacing: 0.04em;
-
   background-color: transparent;
   border: 1px solid #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
@@ -551,10 +550,11 @@ input {
 }
 
 .btn-subscribe {
-  display: flex;
+  display: inline-flex;
   min-width: 165px;
   padding: 8px 24px;
   height: 40px;
+  gap: 16px;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -598,17 +598,17 @@ input {
 
 .modal {
   position: absolute;
-  left: 516px;
-  top: 88px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1) rotate(0);
   width: 408px;
-  min-height: 576px;
+  min-height: 584px;
+  padding: 72px 24px 24px 24px;
   background-color: #fcfcfc;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  transform: scale(1) rotate(0);
   transition: transform var(--cubic);
-  padding: 24px;
 }
 
 .backdrop.is-hidden .modal {
@@ -620,7 +620,10 @@ input {
   right: 24px;
   top: 24px; */
   display: flex;
-  margin-left: auto;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  padding: 0;
   width: 24px;
   height: 24px;
   justify-content: center;
@@ -629,20 +632,29 @@ input {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   cursor: pointer;
-  transition: background var(--cubic), fill var(--cubic);
+  transition: background-color var(--cubic), border var(--cubic);
   margin-bottom: 24px;
 }
 
 .modal-close:hover,
 .modal-close:focus {
-  background: var(--button-background-focus);
+  background-color: var(--button-background-focus);
+  border: none;
   fill: #ffffff;
+}
+
+.svg-close {
+  transition: fill var(--cubic);
 }
 
 .is-hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+}
+
+.form-field {
+  margin-bottom: 8px;
 }
 
 .modal-title {
@@ -657,6 +669,7 @@ input {
 
 .modal-label-name,
 .modal-label-text {
+  display: block;
   margin-bottom: 4px;
   font-weight: 400;
   font-size: 12px;
@@ -665,6 +678,16 @@ input {
   color: #8e8f99;
 
   font-family: Roboto;
+}
+
+.modal-input {
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  outline: transparent;
+  transition: border-color var(--cubic);
+}
+
+.modal-input:focus {
+  border-color: var(--cl-accent);
 }
 
 .modal-label-text {
@@ -711,15 +734,20 @@ input {
   width: 100%;
   height: 120px;
   background-color: transparent;
-  border: 1px solid rgba(33, 33, 33, 0.2);
-  outline-color: var(--cl-accent);
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  outline: transparent;
   border-radius: 4px;
   resize: none;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.17;
-  letter-spacing: 0.48px;
+  letter-spacing: 0.04em;
   color: rgba(46, 47, 66, 0.4);
+  transition: border-color var(--cubic);
+}
+
+.modal-comment:focus {
+  border-color: var(--button-background-color-accent);
 }
 
 .modal-policy {
@@ -731,12 +759,13 @@ input {
   align-items: center;
   font-weight: 400;
   font-size: 12px;
-  line-height: 1.33;
+  line-height: 1.17;
   letter-spacing: 0.04em;
-  color: #757575;
+  color: #8e8f99;
 }
 
-.check-policy-text span {
+.check-area {
+  display: inline-flex;
   width: 16px;
   height: 16px;
   border: 1.25px solid #2e2f42;
@@ -746,14 +775,17 @@ input {
   align-items: center;
   justify-content: center;
   fill: transparent;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  transition: background-color var(--cubic), border var(--cubic),
+    fill var(--cubic);
 }
 
 .check-icon {
   stroke: #ffffff;
 }
 
-.input-check-privacy:checked + .check-policy-text span {
-  background: var(--button-background-focus);
+.input-check-privacy:checked + .check-policy-text .check-area {
+  background-color: var(--button-background-focus);
   border: none;
   fill: #f4f4fd;
 }
@@ -764,18 +796,22 @@ input {
 
 .btn-submit {
   display: block;
-  width: 169px;
+  min-width: 169px;
+  height: 56px;
   margin: 0 auto;
   padding: 16px 32px;
   align-self: center;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
   color: #ffffff;
   background: var(--button-background-color-accent);
   cursor: pointer;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
-  border: 1px solid transparent;
+  border: none;
   transition: background-color var(--cubic);
 }
 
