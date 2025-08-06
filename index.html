@@ -488,7 +488,7 @@
                 required
             /></label>
             <button type="submit" class="btn-subscribe">
-              <span>Subscribe</span>
+              Subscribe
               <svg class="btn-subscribe-icon" width="24" height="24">
                 <use href="./images/icons.svg#icon-paper-airplane"></use>
               </svg>
@@ -502,8 +502,13 @@
     <!-- #region Modal form -->
     <div class="backdrop is-hidden" data-modal>
       <div class="modal">
-        <button type="button" class="modal-close" data-modal-close>
-          <svg viewBox="0 0 32 32" width="8" height="8" class="svg-close">
+        <button
+          type="button"
+          class="modal-close"
+          aria-label="Modal close button"
+          data-modal-close
+        >
+          <svg width="8" height="8" class="svg-close">
             <use href="./images/icons.svg#icon-close-cross"></use>
           </svg>
         </button>
