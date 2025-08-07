@@ -586,17 +586,27 @@ input {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 999;
   width: 100%;
   height: 100%;
-  background: rgba(46, 47, 66, 0.4);
+  background-color: rgba(46, 47, 66, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
   transition: opacity var(--cubic), visibility var(--cubic);
+}
+
+.backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .modal {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%) scale(1) rotate(0);
+  transform: translate(-50%, -50%);
   width: 408px;
   min-height: 584px;
   padding: 72px 24px 24px 24px;
@@ -605,10 +615,6 @@ input {
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   transition: transform var(--cubic);
-}
-
-.backdrop.is-hidden .modal {
-  transform: scale(0) rotate(-360deg);
 }
 
 .modal-close {
@@ -646,12 +652,6 @@ input {
 .modal-close:hover .svg-close,
 .modal-close:focus .svg-close {
   fill: #ffffff;
-}
-
-.is-hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
 }
 
 .form-field {
@@ -728,7 +728,8 @@ input {
   width: 100%;
   height: 120px;
   background-color: transparent;
-  border: 1px solid #4d5ae5;
+  color: rgba(46, 47, 66, 0.4);
+  border: 1px solid rgba(46, 47, 66, 0.4);
   outline: transparent;
   border-radius: 4px;
   resize: none;
@@ -759,17 +760,17 @@ input {
 
 .check-area {
   display: inline-flex;
-  width: 16px;
-  height: 16px;
-  border: 1.25px solid #2e2f42;
-  border-radius: 2px;
-  margin-right: 8px;
-  align-items: center;
   justify-content: center;
-  fill: transparent;
+  align-items: center;
+  height: 16px;
+  width: 16px;
+  margin-right: 8px;
+  border-radius: 2px;
   border: 1px solid rgba(46, 47, 66, 0.4);
+  fill: transparent;
   transition: background-color var(--cubic), border var(--cubic),
     fill var(--cubic);
+  cursor: pointer;
 }
 
 .check-icon {
