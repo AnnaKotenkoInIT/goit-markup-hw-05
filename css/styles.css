@@ -695,6 +695,7 @@ input {
   left: 16px;
   transform: translateY(-50%);
   pointer-events: none;
+  fill: #2e2f42;
   transition: fill var(--cubic);
 }
 
