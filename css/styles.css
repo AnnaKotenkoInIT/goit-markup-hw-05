@@ -760,8 +760,11 @@ input {
   color: #8e8f99;
 }
 
-.check-area {
+span.check-area {
   display: inline-flex;
+}
+
+.check-area {
   height: 16px;
   width: 16px;
   justify-content: center;
